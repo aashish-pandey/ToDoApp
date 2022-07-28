@@ -1,0 +1,36 @@
+<%- include('./partials/head.ejs')%>
+
+    <% if(data.length>0){%>
+        <% const color=["red lighten-1", "purple lighten-1" , "blue lighten-1" ] %>
+            <% var y=1%>
+                <% data.forEach(function(e){ %>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12">
+                                <%var str="card " + color[y%3] %>
+                                    <div class="<%=str%>">
+                                        <div class="card-content dark-text">
+                                            <span class="card-title">Task<%=y%>
+                                                    <!-- <a href="delete" class="right black-text" data-doc = "<%=data.__id%>"><i class="material-icons">delete</i></a> -->
+                                            </span>
+                                            <p>
+                                                <%= e.body %>
+                                            </p>
+                                            <form action="delete" class="<%=color[y%3]%> right" method="post">
+                                                <input type="text" name="id2" value="<%=e._id%>" hidden>
+                                                <button type="submit dark-text">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <% y=y+1; })} %>
+
+                        <%- include('./partials/footer.ejs')%>
